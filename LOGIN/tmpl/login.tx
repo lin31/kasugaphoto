@@ -1,0 +1,13 @@
+: cascade "include/layout.tx"
+#引数は$xarg
+: override content -> {
+<h2>This is LOGIN page</h2>
+: if $xarg.error == 1 {
+	<b>LOGIN ERROR!!</b>
+: }
+		<form method="post" action="<: uri_for('/login_process') :>">
+		ID: <input type="text" name="id" />
+		PASS: <input type="text" name="secret" />
+		<input type="submit" value="Send" />
+	</form>
+: }

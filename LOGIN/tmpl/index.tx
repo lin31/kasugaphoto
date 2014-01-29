@@ -1,0 +1,14 @@
+: cascade "include/layout.tx"
+#引数は$xarg
+: override content -> {
+<h2>This is top page</h2>
+:#ログイン状態でないならログインページへのリンク表示
+:#ログイン状態なら”ようこそ＋名前”とログアウトへのリンク表示
+: if defined $xarg.user.id {
+	ようこそ <: $xarg.user.id :> さん<br>
+	<a href="/logout">logout</a><br>
+: }
+: else {
+	<a href="/login">login</a><br>
+: }
+: }
